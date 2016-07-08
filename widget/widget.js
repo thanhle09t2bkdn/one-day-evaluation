@@ -52,48 +52,24 @@ function main() {
             href: "http://localhost/one-day-evaluation/widget/style.css" 
         });
         css_link.appendTo('head');
-        var data =  '<div id="popup" class="modal-box">'+
-                    '<header>'+
-                    '<a href="#" class="js-modal-close close">×</a>'+
-                    '<h3><a href="http://www.jqueryscript.net/tags.php?/Modal/">Modal</a> Title</h3>'+
-                    '</header>'+
-                    '<div class="modal-body">'+
-                    '<p>Modal Body</p>'+
-                    '</div>'+
-                    '<footer>'+
-                    '<a href="#" class="js-modal-close">Close Button</a>'+
-                    '</footer>'+
-                    '</div>';
-            data += '<a class="js-open-modal" href="#" data-modal-id="popup"> Click me </a>';
+        var data =  '<dialog id="window">'+
+                    '<h3>Sample Dialog!</h3>'+
+                    '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, inventore!</p>'+
+                    '<button id="exit">Close Dialog</button>'+
+                    '</dialog>'+
+                    '<button id="show">Show Dialog</button>';
         
          $('#evaluation-widget-container').html(data);
          
         var appendthis =  ("<div class='modal-overlay js-modal-close'></div>");
 
-        $('a[data-modal-id]').click(function (e) {
-            e.preventDefault();
-            $("body").append(appendthis);
-            $(".modal-overlay").fadeTo(500, 0.7);
-            //$(".js-modalbox").fadeIn(500);
-            var modalBox = $(this).attr('data-modal-id');
-            $('#' + modalBox).fadeIn($(this).data());
-        });
-
-
-        $(".js-modal-close, .modal-overlay").click(function () {
-            $(".modal-box, .modal-overlay").fadeOut(500, function () {
-                $(".modal-overlay").remove();
-            });
-        });
-
-        $(window).resize(function () {
-            $(".modal-box").css({
-                top: ($(window).height() - $(".modal-box").outerHeight()) / 2,
-                left: ($(window).width() - $(".modal-box").outerWidth()) / 2
-            });
-        });
-
-        $(window).resize();
+        var dialog = document.getElementById('window');  
+        document.getElementById('show').onclick = function() {  
+            dialog.show();  
+        };  
+        document.getElementById('exit').onclick = function() {  
+            dialog.close();  
+        };  
     });
 }
 

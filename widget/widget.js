@@ -52,22 +52,30 @@ function main() {
             href: "http://localhost/one-day-evaluation/widget/style.css" 
         });
         css_link.appendTo('head');
-        var data =  '<dialog id="window">'+
-                    '<h3>Sample Dialog!</h3>'+
-                    '<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, inventore!</p>'+
-                    '<button id="exit">Close Dialog</button>'+
-                    '</dialog>'+
-                    '<button id="show">Show Dialog</button>';
-        
+            var data = '<div align="center"> '+
+                    '<br><br><br><br>'+
+                    '<a href="#" id="evaluation-open" class="evaluation-button">Click show popup</a>'+
+                    '</div> '+
+                    '<div id="evaluation-screen"> '+
+                    '<a href="#" id="evaluation-close">&times;</a> '+
+                    '</div> '+
+                    '<div id="evaluation-cover" ></div>';
+            
          $('#evaluation-widget-container').html(data);
+            $('#evaluation-open').click(function (event) {
+                event.preventDefault();                
+                $('#evaluation-screen').show();
+                $('#evaluation-cover').show();
+                $('#evaluation-cover').css('z-index',2);
+            });
+            $('#evaluation-close').click(function (event) {
+                event.preventDefault();
+                $('#evaluation-screen').hide();
+                $('#evaluation-screen').css('z-index',10);
+                $('#evaluation-cover').hide();
+                $('#evaluation-cover').css('z-index',5);
+            });
          
-        var dialog = document.getElementById('window');  
-        document.getElementById('show').onclick = function() {  
-            dialog.show();  
-        };  
-        document.getElementById('exit').onclick = function() {  
-            dialog.close();  
-        };  
     });
 }
 

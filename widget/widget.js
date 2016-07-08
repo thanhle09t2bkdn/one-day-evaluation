@@ -56,10 +56,11 @@ function main() {
                     '<br><br><br><br>'+
                     '<a href="#" id="evaluation-open" class="evaluation-button">Click show popup</a>'+
                     '</div> '+
+                    '<div id="evaluation-cover" >' +
                     '<div id="evaluation-screen"> '+
                     '<a href="#" id="evaluation-close">&times;</a> '+
                     '</div> '+
-                    '<div id="evaluation-cover" ></div>';
+                    '</div>';
             
          $('#evaluation-widget-container').html(data);
             $('#evaluation-open').click(function (event) {

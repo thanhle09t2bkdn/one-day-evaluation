@@ -61,8 +61,6 @@ function main() {
         
          $('#evaluation-widget-container').html(data);
          
-        var appendthis =  ("<div class='modal-overlay js-modal-close'></div>");
-
         var dialog = document.getElementById('window');  
         document.getElementById('show').onclick = function() {  
             dialog.show();  

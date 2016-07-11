@@ -2,9 +2,15 @@
 'use strict';
 
 var app = angular.module('app', [
+    'ngMaterial',
     'ngRoute',          //$routeProvider
     'controllers'       //Our module frontend/web/js/controllers.js
-]);
+]).config(function($mdThemingProvider, $mdIconProvider){
+    $mdThemingProvider.theme('default')
+        .primaryPalette('brown')
+        .accentPalette('red');
+
+});
 
 app.config(['$routeProvider', '$httpProvider',
     function($routeProvider, $httpProvider) {

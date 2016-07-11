@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" >
   <head>
-    <title>Angular Material - Starter App</title>
+    <title>One Day Evaluation App</title>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,6 +12,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/red/pace-theme-minimal.css" rel="stylesheet" />
     <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,400italic'>
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="css/app.css"/>
 
     <style type="text/css">
@@ -25,26 +26,48 @@
 
   </head>
 
-  <body ng-app="starterApp" layout="column" ng-controller="UserController as ul" ng-cloak>
+  <body ng-app="app" layout="column" ng-controller="MainController as ul" ng-cloak>
 
     <md-toolbar layout="row">
       <md-button class="menu" hide-gt-sm ng-click="ul.toggleList()" aria-label="Show User List">
         <md-icon md-svg-icon="menu" ></md-icon>
       </md-button>
-      <h1>Angular Material - Starter App</h1>
+      <h1>One Day Evaluation App</h1>
     </md-toolbar>
 
     <div flex layout="row">
 
         <md-sidenav  ng-click="ul.toggleList()" md-is-locked-open="$mdMedia('gt-sm')" md-component-id="left" class="md-whiteframe-z2" >
-          <md-list>
-            <md-list-item ng-repeat="it in ul.users">
-                <md-button ng-click="ul.selectUser(it)" ng-class="{'selected' : it === ul.selected }">
-                  <md-icon md-svg-icon="{{it.avatar}}" class="avatar"></md-icon>
-                  {{it.name}}
-                </md-button>
-            </md-list-item>
-          </md-list>
+            <md-list>
+                <md-subheader class="md-no-sticky">Favorites</md-subheader>
+                <md-list-item>
+                    <md-icon class="md-default-theme" class="material-icons">&#xE0C9;</md-icon>
+                    <p>Messages</p>
+                    <div class="md-secondary">2</div>
+                </md-list-item>
+                <md-list-item>
+                    <md-icon class="md-default-theme" class="material-icons">&#xE878;</md-icon>
+                    <p>Events</p>
+                    <md-icon class="md-secondary">2</md-icon>
+                </md-list-item>
+                <md-list-item>
+                    <md-icon class="md-default-theme" class="material-icons">&#xE251;</md-icon>
+                    <p>Photos</p>
+                    <md-icon class="md-secondary">2</md-icon>
+                </md-list-item>
+                <md-divider></md-divider>
+                <md-subheader class="md-no-sticky">Pages</md-subheader>
+                <md-list-item>
+                    <md-icon class="md-default-theme" class="material-icons">&#xE7F9;</md-icon>
+                    <p>Pages Feed</p>
+                    <div class="md-secondary">2</div>
+                </md-list-item>
+                <md-list-item>
+                    <md-icon class="md-default-theme" class="material-icons">&#xE1BC;</md-icon>
+                    <p>Like Pages</p>
+                    <div class="md-secondary">20+</div>
+                </md-list-item>
+            </md-list>
         </md-sidenav>
 
         <md-content flex id="content">
@@ -60,36 +83,14 @@
     </div>
 
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script type="text/javascript" src="bower_components/angular-material/angular-material.js"></script>
 
-    <script src="js/Users.js"></script>
-    <script src="js/UserController.js"></script>
-    <script src="js/UserService.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
 
-    <script type="text/javascript">
-
-          angular
-              .module('starterApp', ['ngMaterial', 'users'])
-              .config(function($mdThemingProvider, $mdIconProvider){
-
-                  $mdIconProvider
-                      .defaultIconSet("./css/svg/avatars.svg", 128)
-                      .icon("menu"       , "./css/svg/menu.svg"        , 24)
-                      .icon("share"      , "./css/svg/share.svg"       , 24)
-                      .icon("google_plus", "./css/svg/google_plus.svg" , 512)
-                      .icon("hangouts"   , "./css/svg/hangouts.svg"    , 512)
-                      .icon("twitter"    , "./css/svg/twitter.svg"     , 512)
-                      .icon("phone"      , "./css/svg/phone.svg"       , 512);
-
-                      $mdThemingProvider.theme('default')
-                          .primaryPalette('brown')
-                          .accentPalette('red');
-
-              });
-
-    </script>
 
   </body>
 </html>

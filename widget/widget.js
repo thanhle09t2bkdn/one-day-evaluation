@@ -59,6 +59,11 @@ function main() {
                     '<div id="evaluation-cover" >' +
                     '<div id="evaluation-screen"> '+
                     '<a href="#" id="evaluation-close">&times;</a> '+
+                    '<ul>'+
+                    '<li><a href="http://192.168.0.106:8080/">Viral Leo</a></li>'+
+                    '<li><a href="http://192.168.0.106:8080/">Chanda Stout</a></li>'+
+                    '<li><a href="http://192.168.0.106:8080/">Leila Short</a></li>'+
+                    '</ul>'+
                     '</div> '+
                     '</div>';
             

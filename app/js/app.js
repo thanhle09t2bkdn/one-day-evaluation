@@ -4,8 +4,7 @@ var app = angular.module('app', [
     'ngRoute',          //$routeProvider
     'mgcrea.ngStrap',   //bs-navbar, data-match-route directives
     'ngMessages',   //form validate
-    'controllers',       //Our module frontend/web/js/controllers.js
-    'controllers'       //Our module frontend/web/js/controllers.js
+    'controllers',       //Our module js/controllers.js
 ]);
 
 app.config(['$routeProvider', '$httpProvider',
@@ -26,10 +25,6 @@ app.config(['$routeProvider', '$httpProvider',
             when('/create-student', {
                 templateUrl: 'partials/create-student.html',
                 controller: 'CreateStudentController'
-            }).
-            when('/student', {
-                templateUrl: 'partials/student.html',
-                controller: 'ContactController'
             }).
             otherwise({
                 templateUrl: 'partials/404.html'

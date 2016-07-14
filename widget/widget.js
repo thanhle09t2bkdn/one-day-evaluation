@@ -49,7 +49,7 @@ function main() {
         var css_link = $("<link>", { 
             rel: "stylesheet", 
             type: "text/css", 
-            href: "http://localhost/one-day-evaluation/widget/style.css" 
+            href: "http://192.168.0.106/one-day-evaluation/widget/style.css" 
         });
         css_link.appendTo('head');
             var data = '<div align="center"> '+

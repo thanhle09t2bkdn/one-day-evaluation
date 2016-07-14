@@ -14,6 +14,23 @@ controllers.controller('MainController', ['$scope', '$location', '$window',
         };
     }
 ]);
+controllers.controller('HomeController', ['$scope', 'StudentService',
+    function ($scope, StudentService) {
+        $scope.students = StudentService.list();
+        $scope.delete = function (id) {
+            if(confirm("Do you want to delete this item?")){
+                StudentService.delete(id);
+            }
+        }
+
+    }
+]);
+
+controllers.controller('ViewStudentController', ['$scope', '$routeParams', 'StudentService',
+    function ($scope, $routeParams, StudentService) {
+        $scope.student = StudentService.get($routeParams.id);
+    }
+]);
 
 controllers.controller('ContactController', ['$scope', '$http', '$window',
     function($scope, $http, $window) {

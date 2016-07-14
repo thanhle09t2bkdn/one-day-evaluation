@@ -1,59 +1,107 @@
-
 'use strict';
 
 var app = angular.module('app', [
-    'ngMaterial',
     'ngRoute',          //$routeProvider
+    'mgcrea.ngStrap',   //bs-navbar, data-match-route directives
+    'controllers',       //Our module frontend/web/js/controllers.js
     'controllers'       //Our module frontend/web/js/controllers.js
-]).config(function($mdThemingProvider, $mdIconProvider){
-    $mdThemingProvider.theme('default')
-        .primaryPalette('brown')
-        .accentPalette('red');
-
-});
+]);
 
 app.config(['$routeProvider', '$httpProvider',
     function($routeProvider, $httpProvider) {
         $routeProvider.
             when('/', {
-                templateUrl: '../partials/index.html'
+                templateUrl: 'partials/index.html',
+                controller: 'HomeController'
             }).
-            when('/about', {
-                templateUrl: '../partials/about.html'
+            when('/view-student/:id', {
+                templateUrl: 'partials/view-student.html',
+                controller: 'ViewStudentController'
             }).
-            when('/contact', {
-                templateUrl: '../partials/contact.html',
+            when('/student', {
+                templateUrl: 'partials/student.html',
                 controller: 'ContactController'
             }).
-            when('/login', {
-                templateUrl: '../partials/login.html',
-                controller: 'LoginController'
-            }).
-            when('/dashboard', {
-                templateUrl: '../partials/dashboard.html',
-                controller: 'DashboardController'
+            when('/create-student', {
+                templateUrl: 'partials/create-student.html',
             }).
             otherwise({
-                templateUrl: '../partials/404.html'
+                templateUrl: 'partials/404.html'
             });
-        $httpProvider.interceptors.push('authInterceptor');
     }
 ]);
 
-app.factory('authInterceptor', function ($q, $window, $location) {
-    return {
-        request: function (config) {
-            if ($window.sessionStorage.access_token) {
-                //HttpBearerAuth
-                config.headers.Authorization = 'Bearer ' + $window.sessionStorage.access_token;
-            }
-            return config;
+app.service('StudentService', function () {
+    //to create unique student id
+    var uid = 1;
+
+    //students array to hold list of all students
+    var students = [
+        {
+            id: 1,
+            'firstname': 'Viral',
+            'lastname': 'Leo',
+            'email': 'hello@gmail.com',
+            'phone': '123-2343-44'
         },
-        responseError: function (rejection) {
-            if (rejection.status === 401) {
-                $location.path('/login').replace();
+        {
+            id: 2,
+            'firstname': 'Viral',
+            'lastname': 'Leo',
+            'email': 'hello@gmail.com',
+            'phone': '123-2343-44'
+        },
+        {
+            id: 3,
+            'firstname': 'Viral',
+            'lastname': 'Leo',
+            'email': 'hello@gmail.com',
+            'phone': '123-2343-44'
+        },
+    ];
+
+    //save method create a new student if not already exists
+    //else update the existing object
+    this.save = function (student) {
+        if (student.id == null) {
+            //if this is new student, add it in students array
+            student.id = uid++;
+            student.push(student);
+        } else {
+            //for existing student, find this student using id
+            //and update it.
+            for (var i in students) {
+                if (students[i].id == student.id) {
+                    students[i] = student;
+                }
             }
-            return $q.reject(rejection);
         }
-    };
+
+    }
+
+    //simply search students list for given id
+    //and returns the student object if found
+    this.get = function (id) {
+        for (var i in students) {
+            if (students[i].id == id) {
+                return students[i];
+            }
+        }
+
+    }
+
+    //iterate through students list and delete 
+    //student if found
+    this.delete = function (id) {
+        for (var i in students) {
+            if (students[i].id == id) {
+                students.splice(i, 1);
+            }
+        }
+    }
+
+    //simply returns the students list
+    this.list = function () {
+        return students;
+    }
 });

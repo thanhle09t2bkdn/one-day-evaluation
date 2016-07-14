@@ -1,131 +1,91 @@
-html, body {
-  font-family: 'Roboto', sans-serif;
-  font-size:14px;
-  height:100%;
-  margin: 0px;
-  padding: 0px;
+html,
+body {
+    height: 100%;
 }
 
-/* Toolbar area */
-
-.menu {
-  background-color: transparent;
-  border: none;
-  height: 38px;
-  margin: 16px;
-  width: 36px;
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
 }
 
-
-md-toolbar h3 {
-  margin: auto;
-  font-weight: 500;
+.wrap > .container {
+    padding: 70px 15px 20px;
 }
 
-/* Sidenav area */
-
-md-list-item > button {
-  width:100%;
-  text-align:left !important;
+.footer {
+    height: 60px;
+    background-color: #f5f5f5;
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
 }
 
-  md-list .md-button.selected {
-    color: #03a9f4;
-  }
-
-  md-sidenav  md-list {
-    padding: 0px 0px 8px 0px;
-  }
-
-
-/* Primary content area */
-
-#content {
-  overflow: hidden;
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
 }
 
-#content  {
-  padding-left: 40px;
-  padding-right: 40px;
-  padding-top: 5px;
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
 }
 
-#content .md-button.share {
-  background-color: transparent;
-  border: none;
-  width: 48px;
-  height: 48px;
-  margin: 8px auto 16px 0;
-  position: absolute;
-  top: 10px;
-  right: 25px;
+.not-set {
+    color: #c55;
+    font-style: italic;
 }
 
-#content md-icon.avatar {
-  margin-top: 10px;
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
 }
 
-#content .md-button.share > md-icon {
-  fill:black;
-  width:36px;
-  height:36px;
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
 }
 
-md-button.menuBtn > md-icon {
-  fill:white;
-  width:24px;
-  height:24px;
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
 }
 
-#content .md-button.share:active > md-icon {
-  background-color: #dadada;
-  border-radius: 75%;
-  padding:4px;
-  transition: all 100ms ease-out 30ms;
+.sort-numerical a.asc:after {
+    content: "\e153";
 }
 
-#content img {
-  display: block;
-  height: auto;
-  max-width: 500px;
+.sort-numerical a.desc:after {
+    content: "\e154";
 }
 
-/* Utils */
-
-.content-wrapper {
-  position: relative;
+.sort-ordinal a.asc:after {
+    content: "\e155";
 }
 
-/* Typography support coming in 0.8.0 */
-
-md-toolbar h1 {
-  font-size: 1.250em;
-  font-weight: 400;
+.sort-ordinal a.desc:after {
+    content: "\e156";
 }
 
-.avatar {
-  position: relative;
-  width: 128px;
-  height: 128px;
-  border: 1px solid #ddd;
-  border-radius: 50%;
-  display: inline-block;
-  overflow: hidden;
-  margin: 0px;
-  vertical-align: middle;
-  zoom:0.70;
-  transform: translateZ(0);
-  -webkit-transform: scale(0.70);
-  -moz-transform:scale(0.70);
+.grid-view th {
+    white-space: nowrap;
 }
 
-
-md-bottom-sheet  md-icon {
-  margin-right:20px;
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
 }
 
-span.name {
-  font-weight: bold;
-  font-size:1.1em;
-  padding-left:5px;
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
 }

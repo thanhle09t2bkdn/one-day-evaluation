@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-5 col-md-offset-3 ">
-        <h3>Edit Student</h3>
+        <h3>Create Student</h3>
         <p>
             <a href="#" ng-click="back()" class="btn btn-primary">Back</a>
         </p>
@@ -15,26 +15,41 @@
             <div class="panel-body">
                 <div class="row">
 
-                    <form name="form_student" role="form"  ng-submit="submit()" method="post" novalidate>
+                    <form name="formStudent" role="form"  ng-submit="submit()" method="post"  novalidate required>
                         <div class="form-group">
                             <label for="email">Email address:</label>
-                            <input name="email" ng-model="student.email" type="email" class="form-control" id="email" required ng-required="{ true }">
-                            <p ng-show="form_student.email.$invalid && !form_student.email.$pristine" class="help-block">You name is required.</p>
+                            <input name="email" ng-model="student.email" type="email" class="form-control" id="email" required>
+                            <div ng-messages="formStudent.email.$error" class="text-danger">
+                                <div ng-message="required">This field is required</div>
+                                <div ng-message="email">Your email address is invalid</div>
+                            </div>
 
                         </div>
                         <div class="form-group">
                             <label for="firstname">First name</label>
-                            <input ng-model="student.firstname" type="text" class="form-control" id="firstname" required>
+                            <input name="firstname" ng-model="student.firstname" type="text" class="form-control" id="firstname" required>
+                                <div ng-messages="formStudent.firstname.$error" class="text-danger">
+                                <div ng-message="required">This field is required</div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="lastname">Last name</label>
                             <input ng-model="student.lastname" type="text" class="form-control" id="lastname" required>
+                            <div ng-messages="formStudent.lastname.$error" class="text-danger">
+                                <div ng-message="required">This field is required</div>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone number</label>
-                            <input ng-model="student.phone" type="text" class="form-control" id="phone">
+                            <input name="phone" ng-model="student.phone" type="text" class="form-control" id="phone"
+                                   ng-pattern="/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/"
+                                   required >
+                            <div ng-messages="formStudent.phone.$error" class="text-danger">
+                                <div ng-message="required">This field is required</div>
+                                <div ng-message="pattern">Must be a valid 10 digit phone number</div>
+                          </div>
                         </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button ng-disabled="!formStudent.$valid" type="submit" class="btn btn-default">Submit</button>
                     </form>
 
                 </div>

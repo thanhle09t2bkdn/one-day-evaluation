@@ -3,6 +3,7 @@
 var app = angular.module('app', [
     'ngRoute',          //$routeProvider
     'mgcrea.ngStrap',   //bs-navbar, data-match-route directives
+    'ngMessages',   //form validate
     'controllers',       //Our module frontend/web/js/controllers.js
     'controllers'       //Our module frontend/web/js/controllers.js
 ]);
@@ -46,22 +47,22 @@ app.service('StudentService', function () {
             id: 1,
             'firstname': 'Viral',
             'lastname': 'Leo',
-            'email': 'hello@gmail.com',
-            'phone': '123-2343-44'
+            'email': 'jetut@hotmail.com',
+            'phone': '1234567890'
         },
         {
             id: 2,
-            'firstname': 'Viral',
-            'lastname': 'Leo',
-            'email': 'hello@gmail.com',
-            'phone': '123-2343-44'
+            'firstname': 'Chanda',
+            'lastname': 'Stout',
+            'email': 'pujaricyma@hotmail.com',
+            'phone': '2323232323'
         },
         {
             id: 3,
-            'firstname': 'Viral',
-            'lastname': 'Leo',
-            'email': 'hello@gmail.com',
-            'phone': '123-2343-44'
+            'firstname': 'Leila',
+            'lastname': 'Short',
+            'email': 'mafoh@hotmail.com',
+            'phone': '1232343444'
         },
     ];
 

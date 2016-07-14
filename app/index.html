@@ -27,21 +27,6 @@
                         <li data-match-route="/$">
                             <a href="#/">Home</a>
                         </li>
-                        <li data-match-route="/about">
-                            <a href="#/about">About</a>
-                        </li>
-                        <li data-match-route="/contact">
-                            <a href="#/contact">Contact</a>
-                        </li>
-                        <li data-match-route="/dashboard" ng-show="loggedIn()" class="ng-hide">
-                            <a href="#/dashboard">Dashboard</a>
-                        </li>
-                        <li ng-class="{active:isActive('/logout')}" ng-show="loggedIn()" ng-click="logout()"  class="ng-hide">
-                            <a href="">Logout</a>
-                        </li>
-                        <li data-match-route="/login" ng-hide="loggedIn()">
-                            <a href="#/login">Login</a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -64,6 +49,7 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
     <script src="js/app.js"></script>
     <script src="js/controllers.js"></script>
 

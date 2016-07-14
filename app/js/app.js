@@ -18,12 +18,17 @@ app.config(['$routeProvider', '$httpProvider',
                 templateUrl: 'partials/view-student.html',
                 controller: 'ViewStudentController'
             }).
-            when('/student', {
-                templateUrl: 'partials/student.html',
-                controller: 'ContactController'
+            when('/edit-student/:id', {
+                templateUrl: 'partials/edit-student.html',
+                controller: 'EditStudentController'
             }).
             when('/create-student', {
                 templateUrl: 'partials/create-student.html',
+                controller: 'CreateStudentController'
+            }).
+            when('/student', {
+                templateUrl: 'partials/student.html',
+                controller: 'ContactController'
             }).
             otherwise({
                 templateUrl: 'partials/404.html'
@@ -33,7 +38,7 @@ app.config(['$routeProvider', '$httpProvider',
 
 app.service('StudentService', function () {
     //to create unique student id
-    var uid = 1;
+    var uid = 4;
 
     //students array to hold list of all students
     var students = [
@@ -66,7 +71,7 @@ app.service('StudentService', function () {
         if (student.id == null) {
             //if this is new student, add it in students array
             student.id = uid++;
-            student.push(student);
+            students.push(student);
         } else {
             //for existing student, find this student using id
             //and update it.

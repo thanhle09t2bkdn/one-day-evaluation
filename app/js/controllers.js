@@ -4,14 +4,9 @@ var controllers = angular.module('controllers', []);
 
 controllers.controller('MainController', ['$scope', '$location', '$window',
     function ($scope, $location, $window) {
-        $scope.loggedIn = function() {
-            return Boolean($window.sessionStorage.access_token);
-        };
-
-        $scope.logout = function () {
-            delete $window.sessionStorage.access_token;
-            $location.path('/login').replace();
-        };
+        $scope.back = function(scope, element, attrs) {
+             window.history.back();
+       };
     }
 ]);
 controllers.controller('HomeController', ['$scope', 'StudentService',
@@ -30,6 +25,27 @@ controllers.controller('ViewStudentController', ['$scope', '$routeParams', 'Stud
     function ($scope, $routeParams, StudentService) {
         $scope.student = StudentService.get($routeParams.id);
     }
+]);
+
+controllers.controller('EditStudentController', ['$scope', '$routeParams', '$location','StudentService',
+    function ($scope, $routeParams, $location, StudentService) {
+        $scope.student = StudentService.get($routeParams.id);
+        $scope.submit = function(){
+            StudentService.save($scope.student);
+            $location.path('/').replace();
+        };
+    }
+    
+]);
+controllers.controller('CreateStudentController', ['$scope', '$routeParams', '$location','StudentService',
+    function ($scope, $routeParams, $location, StudentService) {
+        $scope.student = {};
+        $scope.submit = function(){
+            StudentService.save($scope.student);
+            $location.path('/').replace();
+        };
+    }
+    
 ]);
 
 controllers.controller('ContactController', ['$scope', '$http', '$window',

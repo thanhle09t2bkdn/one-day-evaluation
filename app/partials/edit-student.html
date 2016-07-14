@@ -1,9 +1,8 @@
 <div class="row">
-    <div class="col-md-5 col-md-offset-3 ">
-        <h3>Edit Student</h3>
-        <p>
-            <a href="#" ng-click="back()" class="btn btn-primary">Back</a>
-        </p>
+    
+    <div class="col-md-5  col-md-offset-3 ">
+        <h3>Create Student</h3>
+        <a href="#" ng-click="back()" class="btn btn-primary">Back</a>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad">
 
@@ -15,20 +14,18 @@
             <div class="panel-body">
                 <div class="row">
 
-                    <form name="form_student" role="form"  ng-submit="submit()" method="post" novalidate>
+                    <form role="form"  ng-submit="submit()" method="post">
                         <div class="form-group">
                             <label for="email">Email address:</label>
-                            <input name="email" ng-model="student.email" type="email" class="form-control" id="email" required ng-required="{ true }">
-                            <p ng-show="form_student.email.$invalid && !form_student.email.$pristine" class="help-block">You name is required.</p>
-
+                            <input ng-model="student.email" type="email" class="form-control" id="email">
                         </div>
                         <div class="form-group">
                             <label for="firstname">First name</label>
-                            <input ng-model="student.firstname" type="text" class="form-control" id="firstname" required>
+                            <input ng-model="student.firstname" type="text" class="form-control" id="firstname">
                         </div>
                         <div class="form-group">
                             <label for="lastname">Last name</label>
-                            <input ng-model="student.lastname" type="text" class="form-control" id="lastname" required>
+                            <input ng-model="student.lastname" type="text" class="form-control" id="lastname">
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone number</label>
